@@ -10,18 +10,20 @@ const Home = ({ navigation }) => {
   const [data, setData] = useState();
   const [search, setSearch] = useState("");
   const [totalCount, setTotalCount] = useState(0);
+  const [year, setYear] = useState();
   let [page, setPage] = useState(1);
 
   useMemo(() => {
-    moviesAPI(setData, setTotalCount, search, page, data);
+    moviesAPI(setData, setTotalCount, search, page, data, year);
   }, [page]);
 
   const onSearch = () => {
-    moviesAPI(setData, setTotalCount, search, page, data);
+    moviesAPI(setData, setTotalCount, search, page, data, year);
     setPage(1);
   };
 
   const onYearSearch = (year) => {
+    setYear(year);
     moviesAPI(setData, setTotalCount, search, page, data, year);
     setPage(1);
   };
@@ -47,7 +49,7 @@ const Home = ({ navigation }) => {
                 onPress={() => {
                   let nextCount = page + 1;
                   setPage(nextCount);
-                  moviesAPI(setData, setTotalCount, search, page, data);
+                  moviesAPI(setData, setTotalCount, search, page, data, year);
                 }}
                 style={styles.flatlistFooterButton}
               >
