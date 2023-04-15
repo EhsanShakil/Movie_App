@@ -1,7 +1,14 @@
-export const moviesAPI = (setData, setTotalCount, search, page, details) => {
+export const moviesAPI = (
+  setData,
+  setTotalCount,
+  search,
+  page,
+  details,
+  year
+) => {
   const url = `http://www.omdbapi.com/?s=${
     search ? search : "Batman"
-  }?&page=${page}&apikey=d381a153`;
+  }&y=${year}&page=${page}&apikey=d381a153`;
   fetch(url)
     .then((response) => response.json())
     .then((data) => {

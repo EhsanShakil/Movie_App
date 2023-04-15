@@ -10,6 +10,7 @@ const Home = ({ navigation }) => {
   const [data, setData] = useState();
   const [search, setSearch] = useState("");
   const [totalCount, setTotalCount] = useState(0);
+  const [year, setYear] = useState();
   let [page, setPage] = useState(1);
 
   useMemo(() => {
@@ -21,9 +22,21 @@ const Home = ({ navigation }) => {
     moviesAPI(setData, setTotalCount, search, page, data);
   };
 
+  const onYearSearch = () => {
+    setPage(1);
+    moviesAPI(setData, setTotalCount, search, page, data, year);
+  };
+
   return (
     <View style={styles.container}>
-      <Search search={search} setSearch={setSearch} onSearch={onSearch} />
+      <Search
+        search={search}
+        setSearch={setSearch}
+        onSearch={onSearch}
+        year={year}
+        setYear={setYear}
+        onYearSearch={onYearSearch}
+      />
       <FlatList
         contentContainerStyle={styles.flatListContentCenter}
         scrollEnabled={true}
