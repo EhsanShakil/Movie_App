@@ -1,6 +1,7 @@
 import { View, Text, Image, StyleSheet } from "react-native";
 import React from "react";
 import { colors } from "../utils/colors";
+import { Rating, AirbnbRating } from "react-native-ratings";
 
 const Description = ({ route }) => {
   const { url, title, year } = route.params;
@@ -19,6 +20,13 @@ const Description = ({ route }) => {
           <Text style={styles.plot}>Plot</Text>
         </View>
       </View>
+      <AirbnbRating
+        count={5}
+        reviews={["Terrible", "Bad", "Good", "Amazing", "Unbelievable"]}
+        defaultRating={2}
+        size={20}
+        reviewColor="black"
+      />
     </View>
   );
 };

@@ -10,7 +10,7 @@ const Home = ({ navigation }) => {
   const [data, setData] = useState();
   const [search, setSearch] = useState("");
   const [totalCount, setTotalCount] = useState(0);
-  const [year, setYear] = useState();
+  //   const [year, setYear] = useState();
   let [page, setPage] = useState(1);
 
   useMemo(() => {
@@ -18,13 +18,13 @@ const Home = ({ navigation }) => {
   }, [page]);
 
   const onSearch = () => {
-    setPage(1);
     moviesAPI(setData, setTotalCount, search, page, data);
+    setPage(1);
   };
 
-  const onYearSearch = () => {
-    setPage(1);
+  const onYearSearch = (year) => {
     moviesAPI(setData, setTotalCount, search, page, data, year);
+    setPage(1);
   };
 
   return (
@@ -33,8 +33,8 @@ const Home = ({ navigation }) => {
         search={search}
         setSearch={setSearch}
         onSearch={onSearch}
-        year={year}
-        setYear={setYear}
+        // year={year}
+        // setYear={setYear}
         onYearSearch={onYearSearch}
       />
       <FlatList
@@ -45,7 +45,7 @@ const Home = ({ navigation }) => {
         ListFooterComponent={() => {
           return (
             totalCount > 10 &&
-            totalCount != data.length && (
+            totalCount != data?.length && (
               <TouchableOpacity
                 onPress={() => {
                   let nextCount = page + 1;
@@ -105,5 +105,21 @@ const styles = StyleSheet.create({
   flatlistContent: {
     marginHorizontal: 10,
     marginBottom: 10,
+  },
+
+  shape: {
+    justifyContent: "center",
+    height: 250,
+    width: 250,
+    borderRadius: 25,
+    marginRight: 10,
+    backgroundColor: "white",
+  },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+  },
+  padded: {
+    padding: 16,
   },
 });

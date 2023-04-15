@@ -5,6 +5,22 @@ import { colors } from "../utils/colors";
 const Stack = createStackNavigator();
 
 export const RootNavigation = () => {
+  const config = {
+    animation: "easing",
+    config: {
+      stiffness: 1000,
+      damping: 500,
+      mass: 3,
+      overshootClamping: true,
+      restDisplacementThreshold: 0.01,
+      restSpeedThreshold: 0.01,
+    },
+  };
+  const forFade = ({ current }) => ({
+    cardStyle: {
+      opacity: current.progress,
+    },
+  });
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -15,6 +31,7 @@ export const RootNavigation = () => {
           headerTitleAlign: "center",
           headerTintColor: colors.white,
           headerStyle: { backgroundColor: colors.black },
+          cardStyleInterpolator: forFade,
         }}
       />
       <Stack.Screen
@@ -25,6 +42,7 @@ export const RootNavigation = () => {
           headerTitleAlign: "center",
           headerTintColor: colors.white,
           headerStyle: { backgroundColor: colors.black },
+          cardStyleInterpolator: forFade,
         })}
       />
     </Stack.Navigator>

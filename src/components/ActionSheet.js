@@ -5,24 +5,26 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import ActionSheet, { SheetManager } from "react-native-actions-sheet";
 import { colors } from "../utils/colors";
 
 const ActionSheetComponent = (props) => {
+  const [year, setYear] = useState();
   return (
     <ActionSheet id={props.sheetId}>
       <View style={styles.container}>
         <TextInput
-          value={props.payload.year}
-          onChangeText={(text) => props.payload.setYear(text)}
+          value={year}
+          onChangeText={(text) => setYear(text)}
           placeholder="Enter year"
           style={styles.input}
         />
         <TouchableOpacity
           style={styles.advanceSearch}
           onPress={() => {
-            props.payload.onYearSearch(), SheetManager.hide("example-sheet");
+            props.payload.onYearSearch(year);
+            SheetManager.hide("search-sheet");
           }}
         >
           <Text

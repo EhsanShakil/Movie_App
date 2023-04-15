@@ -9,8 +9,8 @@ const Search = ({
   search,
   setSearch,
   onSearch,
-  year,
-  setYear,
+  //   year,
+  //   setYear,
   onYearSearch,
 }) => {
   return (
@@ -28,10 +28,8 @@ const Search = ({
         <TouchableOpacity
           style={styles.margin}
           onPress={() =>
-            SheetManager.show("example-sheet", {
+            SheetManager.show("search-sheet", {
               payload: {
-                year: year,
-                setYear: setYear,
                 onYearSearch: onYearSearch,
               },
             })
@@ -54,7 +52,6 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   },
   input: {
-    borderWidth: 1,
     borderRadius: 20,
     width: "75%",
     height: 45,
