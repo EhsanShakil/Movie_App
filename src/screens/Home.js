@@ -10,7 +10,6 @@ const Home = ({ navigation }) => {
   const [data, setData] = useState();
   const [search, setSearch] = useState("");
   const [totalCount, setTotalCount] = useState(0);
-  //   const [year, setYear] = useState();
   let [page, setPage] = useState(1);
 
   useMemo(() => {
@@ -33,8 +32,6 @@ const Home = ({ navigation }) => {
         search={search}
         setSearch={setSearch}
         onSearch={onSearch}
-        // year={year}
-        // setYear={setYear}
         onYearSearch={onYearSearch}
       />
       <FlatList

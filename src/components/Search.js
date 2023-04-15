@@ -5,14 +5,7 @@ import { colors } from "../utils/colors";
 import { SheetProvider, SheetManager } from "react-native-actions-sheet";
 import "../sheets.js";
 
-const Search = ({
-  search,
-  setSearch,
-  onSearch,
-  //   year,
-  //   setYear,
-  onYearSearch,
-}) => {
+const Search = ({ search, setSearch, onSearch, onYearSearch }) => {
   return (
     <SheetProvider>
       <View style={styles.container}>
